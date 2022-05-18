@@ -4,7 +4,7 @@ import com.frank.test.dto.CheckResult;
 import com.frank.test.dto.UserData;
 import com.frank.test.service.CheckValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +20,7 @@ public class PermissionsController {
     @Autowired
     private CheckValidationService checkValidationService;
 
-    @GetMapping(value = "/validateClient")
+    @PostMapping(value = "/validateClient")
     public List<CheckResult> validateUserClient(@RequestBody UserData request) {
         log.info("validateClient(): request = " + request);
         var response = checkValidationService.validate(request);
